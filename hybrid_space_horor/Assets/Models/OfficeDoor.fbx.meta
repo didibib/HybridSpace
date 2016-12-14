@@ -1,0 +1,163 @@
+fileFormatVersion: 2
+guid: 708b6c1668695f740a261170f3bafbcc
+timeCreated: 1481569511
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: BottomHinge
+    100002: BottomHinge 1
+    100004: Cylinder
+    100006: Cylinder 1
+    100008: Cylinder 2
+    100010: Cylinder 3
+    100012: DoorPanel
+    100014: DoorSideHingePanels
+    100016: Frame
+    100018: Frame 1
+    100020: FramePanel
+    100022: FramePanel 1
+    100024: FramePanel 2
+    100026: FrameSideHinges
+    100028: Handle
+    100030: Handle 1
+    100032: Lock
+    100034: MiddelHinge
+    100036: MiddelHinge 1
+    100038: //RootNode
+    100040: Panel
+    100042: Plate
+    100044: RotationAxis
+    100046: TopHinge
+    100048: TopHinge 1
+    400000: BottomHinge
+    400002: BottomHinge 1
+    400004: Cylinder
+    400006: Cylinder 1
+    400008: Cylinder 2
+    400010: Cylinder 3
+    400012: DoorPanel
+    400014: DoorSideHingePanels
+    400016: Frame
+    400018: Frame 1
+    400020: FramePanel
+    400022: FramePanel 1
+    400024: FramePanel 2
+    400026: FrameSideHinges
+    400028: Handle
+    400030: Handle 1
+    400032: Lock
+    400034: MiddelHinge
+    400036: MiddelHinge 1
+    400038: //RootNode
+    400040: Panel
+    400042: Plate
+    400044: RotationAxis
+    400046: TopHinge
+    400048: TopHinge 1
+    2300000: BottomHinge 1
+    2300002: Cylinder
+    2300004: Cylinder 1
+    2300006: Cylinder 2
+    2300008: Cylinder 3
+    2300010: Frame 1
+    2300012: FramePanel
+    2300014: FramePanel 1
+    2300016: FramePanel 2
+    2300018: Handle 1
+    2300020: MiddelHinge 1
+    2300022: Panel
+    2300024: Plate
+    2300026: TopHinge 1
+    3300000: BottomHinge 1
+    3300002: Cylinder
+    3300004: Cylinder 1
+    3300006: Cylinder 2
+    3300008: Cylinder 3
+    3300010: Frame 1
+    3300012: FramePanel
+    3300014: FramePanel 1
+    3300016: FramePanel 2
+    3300018: Handle 1
+    3300020: MiddelHinge 1
+    3300022: Panel
+    3300024: Plate
+    3300026: TopHinge 1
+    4300000: Frame
+    4300002: FramePanel
+    4300004: Cylinder
+    4300006: FramePanel
+    4300008: Cylinder
+    4300010: FramePanel
+    4300012: Cylinder
+    4300014: Panel
+    4300016: TopHinge
+    4300018: MiddelHinge
+    4300020: BottomHinge
+    4300022: Handle
+    4300024: Cylinder
+    4300026: Plate
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 100
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
