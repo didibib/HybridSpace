@@ -2,13 +2,19 @@
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
+
     public Vector3 spawnpoint;
+
     public GameObject playersmoke;
+
     [HideInInspector] public GameObject Monster;
     [HideInInspector] public GameObject Player;
+
     PlayerAnimationState state;
+
     public SteamVR_LaserPointer laserpointer;
     public SteamVR_Teleporter teleporter;
+
     public GameObject flashlight;
 
     //animation variables
