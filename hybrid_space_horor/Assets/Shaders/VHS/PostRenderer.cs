@@ -4,6 +4,7 @@ using System.Collections;
 [ExecuteInEditMode]
 public class PostRenderer : MonoBehaviour
 {
+    [HideInInspector]
     public Material _material;
 
     public Shader _shader;
