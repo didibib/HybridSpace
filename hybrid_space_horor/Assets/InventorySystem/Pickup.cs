@@ -48,7 +48,6 @@ public class Pickup : MonoBehaviour
             if (Physics.Raycast(ray, out hit, rayLength, slotLayer))
             {
                 Image slot = hit.transform.GetComponent<Image>();
-                hit.transform.SendMessage("HitByRay");
             }
         }
 
@@ -58,7 +57,7 @@ public class Pickup : MonoBehaviour
             if (Physics.Raycast(ray, out hit, rayLength, slotLayer))
             {
                 Transform slotPos = hit.transform;
-                target.transform.SetParent(slotPos);
+                target.transform.SetParent(slotPos, true);
                 target.position = slotPos.position;
             } else
             {

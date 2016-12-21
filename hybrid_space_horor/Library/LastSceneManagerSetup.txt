@@ -1,4 +1,7 @@
 sceneSetups:
-- path: Assets/InventorySystem/InventoryTestScene.unity
+- path: Assets/Scenes/CameraFeedTestScene.unity
   isLoaded: 1
   isActive: 1
+- path: Assets/LoadingBars/LoadingBarsTestScene.unity
+  isLoaded: 0
+  isActive: 0
