@@ -4,11 +4,11 @@ using System.Collections;
 
 public class Pickup : MonoBehaviour
 {
-
     public Camera cam;
     public Canvas invCanvas;
-    public LayerMask pickupItemLayer;
-    public LayerMask slotLayer;
+    bool showCanvas = false;
+
+    public LayerMask pickupLayer;
 
     [HideInInspector]
     public Vector3 posInvCanvas;
@@ -23,12 +23,13 @@ public class Pickup : MonoBehaviour
 
     void Start()
     {
-        invCanvas.GetComponent<Canvas>().enabled = false;
+        invCanvas.gameObject.SetActive(showCanvas);
     }
 
     void Update()
     {
         posInvCanvas = cam.transform.position + cam.transform.forward * distanceCanvas;
+        invCanvas.gameObject.SetActive(showCanvas);
 
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         Debug.DrawRay(ray.origin, ray.direction * rayLength, Color.red);
@@ -36,32 +37,22 @@ public class Pickup : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, rayLength, pickupItemLayer))
-            {
+            if (Physics.Raycast(ray, out hit, rayLength, pickupLayer))
+            {                
                 target = hit.transform;
+                target.SendMessage("OnGrabbed", true);
                 target.GetComponent<Rigidbody>().useGravity = false;
-
                 target.rotation = cam.transform.rotation;
-                target.position = ray.origin + ray.direction * 3;
-            }
-
-            if (Physics.Raycast(ray, out hit, rayLength, slotLayer))
-            {
-                Image slot = hit.transform.GetComponent<Image>();
+                target.position = ray.origin + ray.direction * 2;
             }
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, rayLength, slotLayer))
-            {
-                Transform slotPos = hit.transform;
-                target.transform.SetParent(slotPos, true);
-                target.position = slotPos.position;
-            } else
+            if (target != null)
             {
                 target.GetComponent<Rigidbody>().useGravity = true;
+                target.SendMessage("OnGrabbed", false);
             }
         }
 
@@ -69,7 +60,7 @@ public class Pickup : MonoBehaviour
         {
             invCanvas.transform.position = posInvCanvas;
             invCanvas.transform.rotation = cam.transform.rotation;
-            invCanvas.GetComponent<Canvas>().enabled = !invCanvas.GetComponent<Canvas>().enabled;
+            showCanvas = !showCanvas;            
         }
     }
 }

@@ -5,11 +5,11 @@ using System.Collections;
 public class CRTScript : MonoBehaviour
 {
     #region Variables
-    public Shader curShader;
+    public Shader crtShader;
     public float Distortion = 0.1f;
     public float InputGamma = 2.4f;
     public float OutputGamma = 2.2f;
-    private Material curMaterial;
+    private Material crtMaterial;
     #endregion
 
     #region Properties
@@ -17,16 +17,15 @@ public class CRTScript : MonoBehaviour
     {
         get
         {
-            if (curMaterial == null)
+            if (crtMaterial == null)
             {
-                curMaterial = new Material(curShader);
-                curMaterial.hideFlags = HideFlags.HideAndDontSave;
+                crtMaterial = new Material(crtShader);
+                crtMaterial.hideFlags = HideFlags.HideAndDontSave;
             }
-            return curMaterial;
+            return crtMaterial;
         }
     }
     #endregion
-    // Use this for initialization
     void Start()
     {
         if (!SystemInfo.supportsImageEffects)
@@ -38,7 +37,7 @@ public class CRTScript : MonoBehaviour
 
     void OnRenderImage(RenderTexture sourceTexture, RenderTexture destTexture)
     {
-        if (curShader != null)
+        if (crtShader != null)
         {
             material.SetFloat("_Distortion", Distortion);
             material.SetFloat("_InputGamma", InputGamma);
@@ -62,9 +61,9 @@ public class CRTScript : MonoBehaviour
 
     void OnDisable()
     {
-        if (curMaterial)
+        if (crtMaterial)
         {
-            DestroyImmediate(curMaterial);
+            DestroyImmediate(crtMaterial);
         }
 
     }

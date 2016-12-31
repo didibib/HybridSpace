@@ -2,24 +2,29 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class BreakerController : MonoBehaviour {
+public class BreakerController : MonoBehaviour
+{
 
     public GameObject[] breakers;
     Toggle[] toggles;
     public float[] breakervalues;
-    public float maxload;
-    bool overloaded, resetting;
-    float resettimer;
+    public float maxload, maxreset, maxcamerabattery;
+    [HideInInspector]
+    public bool overloaded, resetting;
+    public GameObject lightbuttons, tvscreen, camerabatterybar;
+    [HideInInspector]
+    public float currentload, resettimer, currentbattery;
 
     private void Start()
     {
         toggles = GetComponentsInChildren<Toggle>();
+        currentbattery = maxcamerabattery;
     }
 
     void Update()
     {
-        float currentload = 0;
-        for(int i = 0; i < breakers.Length; i++)
+        currentload = 0;
+        for (int i = 0; i < breakers.Length; i++)
         {
             if (breakers[i].activeInHierarchy)
                 currentload += breakervalues[i];
@@ -39,10 +44,10 @@ public class BreakerController : MonoBehaviour {
             for (int i = 0; i < breakers.Length; i++)
                 breakers[i].SetActive(false);
         }
-        if(resetting)
+        if (resetting)
         {
             resettimer -= Time.deltaTime;
-            if(resettimer <= 0)
+            if (resettimer <= 0)
             {
                 resetting = false;
                 overloaded = false;
@@ -52,6 +57,13 @@ public class BreakerController : MonoBehaviour {
                     toggles[i].isOn = false;
                 }
             }
+        }
+
+        if (!lightbuttons.activeInHierarchy)
+        {
+            currentbattery -= Time.deltaTime;
+            if (currentbattery < 0)
+                tvscreen.SetActive(false);
         }
     }
 
@@ -65,12 +77,29 @@ public class BreakerController : MonoBehaviour {
         if (!resetting)
         {
             resetting = true;
-            resettimer = 3;
-            for(int i = 0; i < toggles.Length; i++)
+            resettimer = maxreset;
+            for (int i = 0; i < toggles.Length; i++)
             {
                 toggles[i].interactable = false;
                 toggles[i].isOn = false;
             }
+        }
+    }
+
+    public void ToggleScreen()
+    {
+        if (lightbuttons.activeInHierarchy)
+        {
+            lightbuttons.SetActive(false);
+            camerabatterybar.SetActive(true);
+            if (currentbattery > 0)
+                tvscreen.SetActive(true);
+        }
+        else
+        {
+            lightbuttons.SetActive(true);
+            tvscreen.SetActive(false);
+            camerabatterybar.SetActive(false);
         }
     }
 }
