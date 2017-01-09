@@ -1,7 +1,7 @@
 sceneSetups:
-- path: Assets/InteractiveSchematics/Circuit01.unity
+- path: Assets/InventorySystem/InventoryTestScene.unity
   isLoaded: 1
   isActive: 1
-- path: Assets/LoadingBars/LoadingBarsTestScene.unity
+- path: Assets/NewtonVR/Example/NVRExampleScene.unity
   isLoaded: 0
   isActive: 0

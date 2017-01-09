@@ -23,13 +23,18 @@ public class Pickup : MonoBehaviour
 
     void Start()
     {
-        invCanvas.gameObject.SetActive(showCanvas);
+        if (invCanvas != null)
+            invCanvas.gameObject.SetActive(showCanvas);
+
     }
 
     void Update()
     {
-        posInvCanvas = cam.transform.position + cam.transform.forward * distanceCanvas;
-        invCanvas.gameObject.SetActive(showCanvas);
+        if (invCanvas != null)
+        {
+            posInvCanvas = cam.transform.position + cam.transform.forward * distanceCanvas;
+            invCanvas.gameObject.SetActive(showCanvas);
+        }
 
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         Debug.DrawRay(ray.origin, ray.direction * rayLength, Color.red);
@@ -38,7 +43,7 @@ public class Pickup : MonoBehaviour
         {
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, rayLength, pickupLayer))
-            {                
+            {
                 target = hit.transform;
                 target.SendMessage("OnGrabbed", true);
                 target.GetComponent<Rigidbody>().useGravity = false;
@@ -60,7 +65,7 @@ public class Pickup : MonoBehaviour
         {
             invCanvas.transform.position = posInvCanvas;
             invCanvas.transform.rotation = cam.transform.rotation;
-            showCanvas = !showCanvas;            
+            showCanvas = !showCanvas;
         }
     }
 }

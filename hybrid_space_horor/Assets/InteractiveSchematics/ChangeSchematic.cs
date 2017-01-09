@@ -6,6 +6,7 @@ public class ChangeSchematic : MonoBehaviour
 {
     public GameObject[] schematics;
     public GameObject errorText;
+    public GameObject infoText;
 
     void Start()
     {
@@ -14,40 +15,47 @@ public class ChangeSchematic : MonoBehaviour
             schematics[i].SetActive(false);
         }
         errorText.SetActive(false);
+        infoText.SetActive(true);
     }
 
     void OnGUI()
     {
         if (errorText.activeSelf)
         {
-            float blink = Mathf.Sin(Time.time * 3);
+            float blink = Mathf.Sin(Time.time * 3) + .5f;
             errorText.GetComponent<Text>().color = new Color(0, 0, 0, blink);
         }
-       
     }
 
     public void TextChanged(string newText)
     {
+        errorText.SetActive(false);
+        infoText.SetActive(false);
+
         int number;
-        string text;
         if (int.TryParse(newText, out number))
         {
-            if (number >= 0 && number < schematics.Length)
+            if (schematics[number] != null)
             {
-                errorText.SetActive(false);
-                ViewSchematic(number);
-            } else
+                if (number >= 0 && number < schematics.Length)
+                {
+                    ViewSchematic(number);
+                }
+            }
+            else
             {
                 Error();
             }
         }
         else if (newText == "cam")
         {
-            errorText.SetActive(false);
-
             // hier roep je ToggleScreen() aan
 
             Debug.Log("Switch to camera");
+        }
+        else if (newText == "info")
+        {
+            infoText.SetActive(true);
         }
         else
         {
@@ -59,7 +67,8 @@ public class ChangeSchematic : MonoBehaviour
     {
         for (int i = 0; i < schematics.Length; i++)
         {
-            schematics[i].SetActive(false);
+            if (schematics[i] != null)
+                schematics[i].SetActive(false);
         }
         schematics[level].SetActive(true);
     }
@@ -68,7 +77,8 @@ public class ChangeSchematic : MonoBehaviour
     {
         for (int i = 0; i < schematics.Length; i++)
         {
-            schematics[i].SetActive(false);
+            if (schematics[i] != null)
+                schematics[i].SetActive(false);
         }
         errorText.SetActive(true);
     }
