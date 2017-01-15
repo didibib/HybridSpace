@@ -1,7 +1,4 @@
 sceneSetups:
-- path: Assets/InventorySystem/InventoryTestScene.unity
+- path: Assets/Inventory&Interaction/Inventory&InteractionTestScene.unity
   isLoaded: 1
   isActive: 1
-- path: Assets/NewtonVR/Example/NVRExampleScene.unity
-  isLoaded: 0
-  isActive: 0
