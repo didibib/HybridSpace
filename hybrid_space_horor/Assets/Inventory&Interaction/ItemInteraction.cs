@@ -12,7 +12,7 @@ public class ItemInteraction : PickupObject
     // is this object a keycard or battery
     public bool isKeycard; // keycardreaders moeten een audiosource hebben
     public bool isBattery; // de zaklamp moet een audiosource hebben
-    bool isNVR;
+    public bool isNVR;
 
     // audio for the keycardreader
     public AudioClip accessGrantedAudio;
@@ -22,20 +22,21 @@ public class ItemInteraction : PickupObject
     public override void Start()
     {
         base.Start();
-        if (interactWithObject.GetComponent<NVRInteractableItem>() != null)
-        {
-            isNVR = true;
-            interactWithObject.GetComponent<NVRInteractableItem>().enabled = false;
-        } 
-        else
-        {
-            isNVR = false;
-            Debug.Log("This object does not use Newton VR");
-        }
+        //if (interactWithObject.GetComponent<NVRInteractableItem>() != null)
+        //{
+        //    isNVR = true;
+        //    // interactWithObject.GetComponent<NVRInteractableItem>().enabled = false;
+        //} 
+        //else
+        //{
+        //    isNVR = false;
+        //    Debug.Log("This object does not use Newton VR");
+        //}
     }
 
     void OnTriggerEnter(Collider col)
     {
+        float audioPitch = Random.Range(0.95f, 1.05f); ;
         AudioSource audioSource = col.GetComponent<AudioSource>();
         if (col.tag == "KeycardReader" && isKeycard)
         {
@@ -44,19 +45,22 @@ public class ItemInteraction : PickupObject
                 if (isNVR)
                 {
                     audioSource.clip = accessGrantedAudio;
+                    audioSource.pitch = audioPitch;
                     audioSource.Play();
-                    interactWithObject.GetComponent<NVRInteractableItem>().enabled = true;
+                    //interactWithObject.GetComponent<NVRInteractableItem>().enabled = true;
                 }
             }
             else
             {
                 audioSource.clip = accessDeniedAudio;
+                audioSource.pitch = audioPitch;
                 audioSource.Play();
             }
         } 
         else if (col.tag == "Battery" && isBattery)
         {
             audioSource.clip = insertBatteryAudio;
+            audioSource.pitch = audioPitch;
             audioSource.Play();
             Object.Destroy(gameObject);
         }
