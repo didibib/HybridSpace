@@ -25,7 +25,7 @@ public class ItemInteraction : PickupObject
         if (interactWithObject.GetComponent<NVRInteractableItem>() != null)
         {
             isNVR = true;
-            // interactWithObject.GetComponent<NVRInteractableItem>().enabled = false;
+            interactWithObject.GetComponent<NVRInteractableItem>().enabled = false;
         }
         else
         {
