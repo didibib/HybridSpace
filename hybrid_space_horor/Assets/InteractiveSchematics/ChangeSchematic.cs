@@ -24,6 +24,11 @@ public class ChangeSchematic : MonoBehaviour
         noPowerText.SetActive(false);
     }
 
+    void Update()
+    {
+
+    }
+
     void OnGUI()
     {
         if (errorText.activeSelf)
@@ -80,6 +85,7 @@ public class ChangeSchematic : MonoBehaviour
             if (true/*breakerbox.Power()*/) // bool om te checken of de power aan is.
             {
                 callingText.SetActive(true);
+                // call the elevator
             }
             else
             {
