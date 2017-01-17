@@ -1,4 +1,7 @@
 sceneSetups:
-- path: Assets/LoadingBars/LoadingBarsTestScene.unity
+- path: Assets/Flashlight/FlashlightTestScene.unity
   isLoaded: 1
   isActive: 1
+- path: Assets/Inventory&Interaction/Inventory&InteractionTestScene.unity
+  isLoaded: 0
+  isActive: 0
